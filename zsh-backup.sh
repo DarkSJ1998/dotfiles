@@ -10,15 +10,14 @@ echo
 echo "> Starting"
 
 CURRENT_DIR=$(exec pwd)
-USER_DIR=~
 
 echo 
 echo "current directory: \"$CURRENT_DIR\""
-echo "user's directory: \"$USER_DIR\""
+echo "user's directory: \"$HOME\""
 
 echo 
 echo "> Checking if a .zshrc file exists in the user's directory..."
-ZSHRC_EXISTS=$(exec ls -a $USER_DIR | grep -x .zshrc)
+ZSHRC_EXISTS=$(exec ls -a $HOME | grep -x .zshrc)
 # echo "ZSHRC_EXISTS = \"$ZSHRC_EXISTS\""
 
 if [[ $ZSHRC_EXISTS == ".zshrc" ]]
@@ -31,7 +30,7 @@ fi
 
 echo 
 echo "> Checking the differences between the user's .zshrc file and the one in this repo..."
-diff $USER_DIR/.zshrc $CURRENT_DIR/zsh/.zshrc
+diff $HOME/.zshrc $CURRENT_DIR/zsh/.zshrc
 
 echo 
 read -p "Please confirm if you want to backup the user's .zshrc file (Y/n): " BACKUP_CONSENT
@@ -42,8 +41,8 @@ BACKUP_CONSENT=${BACKUP_CONSENT^^}
 
 if [[ $BACKUP_CONSENT == "Y" ]]
 then
-    echo "> Copying the \"$USER_DIR/.zshrc\" file to \"$CURRENT_DIR/zsh/.zshrc\" file..."
-    cp $USER_DIR/.zshrc $CURRENT_DIR/zsh/
+    echo "> Copying the \"$HOME/.zshrc\" file to \"$CURRENT_DIR/zsh/.zshrc\" file..."
+    cp $HOME/.zshrc $CURRENT_DIR/zsh/
     echo "> Done!"
 else
     echo "> Skipping this step"
