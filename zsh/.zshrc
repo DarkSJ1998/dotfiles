@@ -16,6 +16,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
+
+# Overriding the theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
@@ -84,6 +86,12 @@ plugins=(
   zsh-syntax-highlighting
   you-should-use
 )
+
+# Sourcing the custom configurations
+# https://medium.com/codex/how-and-why-you-should-split-your-bashrc-or-zshrc-files-285e5cc3c843)
+for FILE in ~/.zsh-configs/*.sh; do
+  source $FILE
+done
 
 source $ZSH/oh-my-zsh.sh
 
