@@ -4,24 +4,31 @@ apply_zsh_configs() {
     echo
     echo "> Checking if the .zsh-configs directory exists in the user's directory..."
     ZSH_CONFIGS_EXISTS=$(exec ls -a $HOME | grep -x .zsh-configs)
-    echo "ZSH_CONFIGS_EXISTS = \"$ZSH_CONFIGS_EXISTS\""\
+    # echo "ZSH_CONFIGS_EXISTS = \"$ZSH_CONFIGS_EXISTS\""\
 
     # Check if the .zsh-configs directory exists
     if [[ -z $ZSH_CONFIGS_EXISTS ]]
     then
         echo "> .zsh-configs directory doesn't exist"
-        read -p "Please confirm if you want to create a new .zsh-configs directory (Y/n): " ZSH_CONFIGS_CONSENT
+        echo
+
+        read -p "> Please confirm if you want to create a new .zsh-configs directory (Y/n): " ZSH_CONFIGS_CONSENT
 
         # Changing the input to uppercase
         ZSH_CONFIGS_CONSENT=$(echo $ZSH_CONFIGS_CONSENT | tr "[:lower:]" "[:upper:]")
 
         if [[ $ZSH_CONFIGS_CONSENT == "Y" ]]
         then
+            echo
             echo "> Creating a new .zsh-configs directory..."
+            
             mkdir -p $HOME/.zsh-configs
+            
+            echo
             echo "> Done!"
         else
-            echo "> Skipping this step"
+            echo
+            echo "> No changes to be done, exiting."
         fi
         exit
     fi
@@ -31,9 +38,10 @@ apply_zsh_configs() {
 
     if [[ $ZSH_CONFIGS_EXISTS == ".zsh-configs" ]]
     then
+        echo
         echo "> .zsh-configs directory found!"
-        echo 
 
+        echo
         echo "> Applying the configs from \"$CURRENT_DIR/zsh/.zsh-configs\" to the \"$HOME/.zsh-configs\" directory..."
         cp -r $CURRENT_DIR/zsh/.zsh-configs/ $HOME/.zsh-configs/
 
@@ -41,6 +49,7 @@ apply_zsh_configs() {
         echo "> Done!"
 
     else
+        echo
         echo "> .zsh-configs doesn't exist, exiting"
         exit
     fi
