@@ -10,3 +10,8 @@
 
 # The configuration for Homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications/Homebrew"
+# export http_proxy="http://proxy.example.com:8080"
+# export https_proxy="http://proxy.example.com:8080"
+# export no_proxy="localhost,"
