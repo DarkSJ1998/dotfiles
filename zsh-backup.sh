@@ -13,7 +13,7 @@ backup_zsh_configs() {
         read -p "Please confirm if you want to backup the contents under the .zsh-configs directory (Y/n): " BACKUP_CONSENT
 
         # Changing the input to uppercase
-        BACKUP_CONSENT=${BACKUP_CONSENT^^}
+        BACKUP_CONSENT=$(echo $BACKUP_CONSENT | tr "[:lower:]" "[:upper:]")
         # echo "BACKUP_CONSENT = \"$BACKUP_CONSENT\""
 
         if [[ $BACKUP_CONSENT == "Y" ]]
@@ -77,7 +77,7 @@ echo
 read -p "Please confirm if you want to backup the user's .zshrc file (Y/n): " BACKUP_CONSENT
 
 # Changing the input to uppercase
-BACKUP_CONSENT=${BACKUP_CONSENT^^}
+BACKUP_CONSENT=$(echo $BACKUP_CONSENT | tr "[:lower:]" "[:upper:]")
 # echo "BACKUP_CONSENT = \"$BACKUP_CONSENT\""
 
 if [[ $BACKUP_CONSENT == "Y" ]]
