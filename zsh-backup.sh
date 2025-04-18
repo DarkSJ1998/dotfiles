@@ -20,7 +20,7 @@ backup_zsh_configs() {
         then
             echo "> Copying the \"$HOME/.zsh-configs\" directory to \"$CURRENT_DIR/zsh/.zsh-configs\" folder..."
 
-            ZSH_CONFIGS_EXISTS_REPO=$(exec dir $CURRENT_DIR/zsh | grep .zsh-configs)
+            ZSH_CONFIGS_EXISTS_REPO=$(exec dir -a $CURRENT_DIR/zsh | grep .zsh-configs)
             echo ZSH_CONFIGS_EXISTS_REPO="$ZSH_CONFIGS_EXISTS_REPO"
 
             if [[ -z $ZSH_CONFIGS_EXISTS_REPO ]]
