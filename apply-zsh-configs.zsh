@@ -44,17 +44,17 @@ apply_zsh_configs() {
         echo
         echo "> Backing up the existing contents to \"$HOME/.zsh-configs/\" folder..."
 
-        BACKUP_FOLDER_NAME="backup_$(date +'%F_%H-%M-%S')"
-        mkdir -p $HOME/.zsh-configs/$BACKUP_FOLDER_NAME
+        BACKUP_FOLDER_NAME=".zsh-configs_$(date +'%F_%H-%M-%S')"
+        mkdir -p $HOME/$BACKUP_FOLDER_NAME
 
-        cp -r $HOME/.zsh-configs/ $HOME/.zsh-configs/$BACKUP_FOLDER_NAME/
+        cp -r $HOME/.zsh-configs/* $HOME/$BACKUP_FOLDER_NAME/
 
         echo
-        echo "> Backed up the existing contents to \"$HOME/.zsh-configs/$BACKUP_FOLDER_NAME\" folder"
+        echo "> Backed up the existing contents to \"$HOME/$BACKUP_FOLDER_NAME\" folder"
 
         echo
         echo "> Applying the configs from \"$CURRENT_DIR/zsh/.zsh-configs\" to the \"$HOME/.zsh-configs\" directory..."
-        cp -r $CURRENT_DIR/zsh/.zsh-configs/ $HOME/.zsh-configs/
+        cp -r $CURRENT_DIR/zsh/.zsh-configs/* $HOME/.zsh-configs/
 
         echo
         echo "> Done!"
