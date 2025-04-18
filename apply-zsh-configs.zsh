@@ -29,8 +29,8 @@ apply_zsh_configs() {
         else
             echo
             echo "> No changes to be done, exiting."
+            exit
         fi
-        exit
     fi
 
     # Validating again if the .zsh-configs directory exists
